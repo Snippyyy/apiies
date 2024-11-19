@@ -1,0 +1,287 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://apiies.test'
+paths:
+  /api/lists/categories:
+    get:
+      summary: ''
+      operationId: getApiListsCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Updated Category from API'
+                    -
+                      id: 2
+                      name: 'et voluptatibus odio'
+                    -
+                      id: 3
+                      name: 'a sunt est'
+                    -
+                      id: 4
+                      name: 'qui ut id'
+                    -
+                      id: 5
+                      name: 'ut maxime omnis'
+                    -
+                      id: 6
+                      name: 'totam commodi inventore'
+                    -
+                      id: 7
+                      name: 'minus explicabo voluptatem'
+                    -
+                      id: 8
+                      name: 'dicta non eaque'
+                    -
+                      id: 9
+                      name: 'excepturi porro non'
+                    -
+                      id: 10
+                      name: 'molestiae voluptas sit'
+                    -
+                      id: 12
+                      name: 'Categoría con fichero'
+                    -
+                      id: 13
+                      name: 'Categoría con fichero 2'
+                    -
+                      id: 14
+                      name: 'Categoría con fichero 3'
+                    -
+                      id: 15
+                      name: 'Categoría con fichero 4'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Updated Category from API'
+                      -
+                        id: 2
+                        name: 'et voluptatibus odio'
+                      -
+                        id: 3
+                        name: 'a sunt est'
+                      -
+                        id: 4
+                        name: 'qui ut id'
+                      -
+                        id: 5
+                        name: 'ut maxime omnis'
+                      -
+                        id: 6
+                        name: 'totam commodi inventore'
+                      -
+                        id: 7
+                        name: 'minus explicabo voluptatem'
+                      -
+                        id: 8
+                        name: 'dicta non eaque'
+                      -
+                        id: 9
+                        name: 'excepturi porro non'
+                      -
+                        id: 10
+                        name: 'molestiae voluptas sit'
+                      -
+                        id: 12
+                        name: 'Categoría con fichero'
+                      -
+                        id: 13
+                        name: 'Categoría con fichero 2'
+                      -
+                        id: 14
+                        name: 'Categoría con fichero 3'
+                      -
+                        id: 15
+                        name: 'Categoría con fichero 4'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Updated Category from API'
+      tags:
+        - Categories
+  /api/categories:
+    get:
+      summary: 'Get all categories'
+      operationId: getAllCategories
+      description: 'Getting the list of the categories'
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Categories
+    post:
+      summary: ''
+      operationId: postApiCategories
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: soluta
+                  nullable: false
+              required:
+                - name
+  '/api/categories/{id}':
+    get:
+      summary: 'Show category'
+      operationId: showCategory
+      description: 'Get a category by ID'
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Categories
+    put:
+      summary: ''
+      operationId: putApiCategoriesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: tempore
+                  nullable: false
+              required:
+                - name
+    delete:
+      summary: ''
+      operationId: deleteApiCategoriesId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Categories
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+  /api/products:
+    get:
+      summary: ''
+      operationId: getApiProducts
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Products
+tags:
+  -
+    name: Categories
+    description: 'Managing categories'
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Products
+    description: "\nManaging products"
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []

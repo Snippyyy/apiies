@@ -8,10 +8,20 @@ use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Knuckles\Scribe\Attributes\Endpoint;
+use Knuckles\Scribe\Attributes\Group;
+use Knuckles\Scribe\Attributes\QueryParam;
 use Symfony\Component\HttpFoundation\Response;
 
+#[Group('Categories', description: 'Managing categories')]
+#[QueryParam('page', 'int', 'The page number', example: 12)]
 class CategoryController extends Controller
 {
+    /**
+     * Get all categories
+     *
+     * Getting the list of the categories
+     */
     public function index()
     {
         abort_if(! auth()->user()->tokenCan('categories-list'), 403);
@@ -19,6 +29,7 @@ class CategoryController extends Controller
         return CategoryResource::collection(Category::all());
     }
 
+    #[Endpoint('Show category', description: 'Get a category by ID')]
     public function show(Category $category)
     {
         abort_if(! auth()->user()->tokenCan('categories-show'), 403);
@@ -26,6 +37,13 @@ class CategoryController extends Controller
         return new CategoryResource($category);
     }
 
+    /**
+     * Store a new category
+     *
+     * Creating a new category
+     *
+     * @bodyParam name string required The name of the category. Example: Electronics
+     */
     public function store(StoreCategoryRequest $request)
     {
         $data = $request->all();
