@@ -18,15 +18,19 @@ Route::get('lists/categories', [CategoryController::class,  'list']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
 
-    //Productos
-    Route::get('products', [ProductController::class,  'index'])
-        ->middleware('throttle:products');
-    Route::get('products/{product}', [ProductController::class,  'show']);
-    Route::post('products', [ProductController::class,  'store']);
-    Route::put('products/{product}', [ProductController::class,  'update']);
-    Route::delete('products/{product}', [ProductController::class,  'destroy']);
+    //Productos usar luego apiResource
+    //Route::get('products', [ProductController::class,  'index'])
+    //     ->middleware('throttle:products');
+    //Route::get('products/{product}', [ProductController::class,  'show']);
+    //Route::post('products', [ProductController::class,  'store']);
+    //Route::put('products/{product}', [ProductController::class,  'update']);
+    //Route::delete('products/{product}', [ProductController::class,  'destroy']);
+    Route::ApiResource('products', ProductController::class)->middleware('throttle:products');
 
-    //Comentarios
+
+
+
+    //Comentarios  ApiResource no usa rutas de doble anidamiento por lo que se debe hacer manualmente1
     Route::get('products/{product}/comments', [CommentController::class,  'index']);
     Route::post('products/{product}', [CommentController::class,  'store']);
     Route::delete('products/{product}/comments/{comment}', [CommentController::class, 'destroy']);
