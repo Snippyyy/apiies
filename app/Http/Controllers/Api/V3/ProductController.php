@@ -11,6 +11,12 @@ class ProductController extends Controller
 {
     public function index()
     {
+        abort_if(
+            !(auth()->user()->tokenCan('read-write') || auth()->user()->tokenCan('read')),
+            401,
+            'You are not allowed to see this product'
+        );
+
         $products = Product::with('category')->paginate(9);
 
         return ProductResource::collection($products);
@@ -19,10 +25,14 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         abort_if(
-            ! (auth()->user()->tokenCan('read-write') || auth()->user()->tokenCan('read')),
+            !(auth()->user()->tokenCan('read-write') || auth()->user()->tokenCan('read')),
             401,
             'You are not allowed to see this product'
         );
+
+        if ($product->comments()->count() > 0) {
+            $product->load(['comments.user']);
+        }
         return new ProductResource($product);
     }
     public function store(StoreProductRequest $request)
@@ -36,6 +46,8 @@ class ProductController extends Controller
     }
     public function update(StoreProductRequest $request, Product $product)
     {
+        abort_if(! auth()->user()->tokenCan('read-write'), 401,'You are not allowed to update a product');
+
         $request = $request->validated();
 
         $product->update($request);
@@ -44,6 +56,7 @@ class ProductController extends Controller
     }
     public function destroy(Product $product)
     {
+        abort_if(! auth()->user()->tokenCan('read-write'), 401,'You are not allowed to Delete a product');
         $product->delete();
     }
 }

@@ -226,8 +226,8 @@ class ComposerStaticInit7da2e640ea32366385664c7f57b395f6
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Whoops\\' => 
         array (
@@ -399,8 +399,8 @@ class ComposerStaticInit7da2e640ea32366385664c7f57b395f6
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -675,9 +675,14 @@ class ComposerStaticInit7da2e640ea32366385664c7f57b395f6
         'App\\Http\\Controllers\\Api\\V1\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/ProductController.php',
         'App\\Http\\Controllers\\Api\\V2\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V2/CategoryController.php',
         'App\\Http\\Controllers\\Api\\V2\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V2/ProductController.php',
+        'App\\Http\\Controllers\\Api\\V3\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V3/CategoryController.php',
+        'App\\Http\\Controllers\\Api\\V3\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V3/LoginController.php',
+        'App\\Http\\Controllers\\Api\\V3\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V3/ProductController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Middleware\\AlwaysAcceptJson' => __DIR__ . '/../..' . '/app/Http/Middleware/AlwaysAcceptJson.php',
+        'App\\Http\\Requests\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/LoginRequest.php',
         'App\\Http\\Requests\\StoreCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreCategoryRequest.php',
+        'App\\Http\\Requests\\StoreProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreProductRequest.php',
         'App\\Http\\Resources\\CategoryResource' => __DIR__ . '/../..' . '/app/Http/Resources/CategoryResource.php',
         'App\\Http\\Resources\\ProductResource' => __DIR__ . '/../..' . '/app/Http/Resources/ProductResource.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
@@ -807,6 +812,7 @@ class ComposerStaticInit7da2e640ea32366385664c7f57b395f6
         'Database\\Factories\\ProductFactory' => __DIR__ . '/../..' . '/database/factories/ProductFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
