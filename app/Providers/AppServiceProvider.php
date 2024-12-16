@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Observers\CategoryObserver;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
@@ -25,9 +26,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         RateLimiter::for('products', function ($request) {
-            return $request->user()?->role === 'admin'
-                ? Limit::none()
-                : Limit::perMinute(5)->by($request->user()?->id ?: $request->ip());
+            if ( $request->user()?->role === 'admin') {
+                return Limit::none();
+            }
+            return Limit::perMinute(5)->by($request->user()?->id ?: $request->ip())->response(function () {
+                return response()->json([
+                    'message' => 'Too Many Attempts.',
+                    'status' => 429], 429);
+            });
         });
+
+        //Category observer
+        CategoryObserver::observe(CategoryObserver::class);
+
     }
 }
