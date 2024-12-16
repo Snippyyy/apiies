@@ -36,8 +36,8 @@ class AppServiceProvider extends ServiceProvider
             });
         });
 
-        //Category observer
-        CategoryObserver::observe(CategoryObserver::class);
+
+
 
     }
 }
