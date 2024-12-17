@@ -18,8 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
         apiPrefix: 'api/v1',
         then: function () {
             Route::middleware('api')
-                ->prefix('api/v3')
-                ->group(base_path('routes/api_v3.php'));
+                ->prefix('api/v4')
+                ->group(base_path('routes/api_v4.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
