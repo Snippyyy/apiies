@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Api\V4;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTagRequest;
+use App\Http\Resources\ProductResource;
 use App\Http\Resources\TagResource;
+use App\Models\Product;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
@@ -36,5 +39,14 @@ class TagController extends Controller
         return response()->json([
             'message' => 'Tag deleted successfully',
         ]);
+    }
+    public function filterByTags(Request $request)
+    {
+        $tags = $request->input('tags', []);
+        $products = Product::whereHas('tags', function ($query) use ($tags) {
+                     $query->whereIn('tags.name', $tags);
+                    })->get();
+        $products->load( 'tags');
+        return ProductResource::collection($products);
     }
 }

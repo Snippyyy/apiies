@@ -44,7 +44,11 @@ class ProductController extends Controller
         $request = $request->validated();
 
         $product = Product::create($request);
-        $product->tags()->attach(Tag::whereIn('name', $request['tags'])->pluck('id'));
+
+        if (!$product->tags()->count() > 0) {
+            $product->tags()->attach(Tag::whereIn('name', $request['tags'])->pluck('id'));
+        }
+
 
         return new ProductResource($product);
     }
