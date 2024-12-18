@@ -42,7 +42,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //abort_if(! auth()->user()->tokenCan('categories-show'), 403);
-
+        $category->load('products');
         return new CategoryResource($category);
     }
 
