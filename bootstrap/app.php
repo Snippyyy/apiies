@@ -33,4 +33,19 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->json(['message' => 'Object Not Found'], 404);
             }
         });
+
+        $exceptions->renderable(function (MethodNotAllowedHttpException $e, Request $request) {
+            if ($request->wantsJson()) {
+                return response()->json(['message' => 'Method Not Allowed'], 405);
+            }
+        });
+
+        $exceptions->renderable(function (ValidationException $e, Request $request) {
+            if ($request->wantsJson()) {
+                return response()->json(['message' => 'Validation Error', 'errors' => $e->errors()], 422);
+            }
+        });
     })->create();
+
+
+

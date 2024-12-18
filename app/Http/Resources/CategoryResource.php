@@ -23,6 +23,7 @@ class CategoryResource extends JsonResource
                 }
                 return $this->description;
             }),
+            'products' => ProductResource::collection($this->whenLoaded('products')),
         ];
     }
 }
