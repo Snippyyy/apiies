@@ -12,9 +12,12 @@ Route::get('/user', function (Request $request) {
 
 Route::get('lists/categories', [CategoryController::class,  'list']);
 Route::get('lists/subcategories', [SubcategoryController::class,  'list']);
+
+
 Route::apiResource('subcategories', SubcategoryController::class);
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('privatelists/subcategories', [SubcategoryController::class,  'privateList']);
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('products', ProductController::class)->middleware('throttle:products');
 

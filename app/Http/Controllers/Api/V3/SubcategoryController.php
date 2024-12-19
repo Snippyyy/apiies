@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V3;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubcategoryRequest;
+use App\Http\Resources\PrivateSubcategoryResource;
 use App\Http\Resources\SubcategoryResource;
 use App\Models\Subcategory;
 
@@ -17,6 +18,13 @@ class SubcategoryController extends Controller
     public function list()
     {
         return SubcategoryResource::collection(Subcategory::paginate(10));
+    }
+
+    public function privateList()
+    {
+        $data = Subcategory::paginate(12);
+        $data->load('products');
+        return PrivateSubcategoryResource::collection($data);
     }
 
     public function store(SubcategoryRequest $request)
